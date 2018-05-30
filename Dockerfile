@@ -15,6 +15,6 @@ RUN stack setup
 # in parallel. However, this can cause OOM issues as the linking step
 # in GHC can be expensive. If the build fails, try specifying the
 # '-j1' flag to force the build to run sequentially.
-RUN stack build
+RUN stack build -j1 -v
 
 ENTRYPOINT stack exec duckling-example-exe

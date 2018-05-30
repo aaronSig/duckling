@@ -632,6 +632,12 @@ library
                      , Duckling.Url.Rules
                      , Duckling.Url.Types
 
+                    -- FlightNumber
+                     , Duckling.FlightNumber.Corpus
+                     , Duckling.FlightNumber.Helpers
+                     , Duckling.FlightNumber.Rules
+                     , Duckling.FlightNumber.Types
+
                      -- Volume
                      , Duckling.Volume.AR.Corpus
                      , Duckling.Volume.AR.Rules
@@ -897,6 +903,9 @@ test-suite duckling-test
 
                      -- Url
                      , Duckling.Url.Tests
+
+                     -- FlightNumber
+                     , Duckling.FlightNumber.Tests
 
                      -- Volume
                      , Duckling.Volume.AR.Tests

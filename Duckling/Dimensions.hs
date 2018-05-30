@@ -83,6 +83,7 @@ dependents (This Time) =
 dependents (This TimeGrain) = HashSet.empty
 dependents (This Url) = HashSet.empty
 dependents (This Volume) = HashSet.singleton (This Numeral)
+dependents (This FlightNumber) = HashSet.empty
 dependents (This (CustomDimension dim)) = dimDependents dim
 
 langDimensions :: Lang -> [Some Dimension]

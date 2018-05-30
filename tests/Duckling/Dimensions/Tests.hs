@@ -26,6 +26,7 @@ import qualified Duckling.Temperature.Tests as Temperature
 import qualified Duckling.Time.Tests as Time
 import qualified Duckling.Volume.Tests as Volume
 import qualified Duckling.Url.Tests as Url
+import qualified Duckling.FlightNumber.Tests as FlightNumber
 
 tests :: TestTree
 tests = testGroup "Dimensions Tests"
@@ -41,4 +42,5 @@ tests = testGroup "Dimensions Tests"
   , Time.tests
   , Volume.tests
   , Url.tests
+  , FlightNumber.tests
   ]

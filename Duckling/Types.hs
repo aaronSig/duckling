@@ -57,6 +57,7 @@ import Duckling.Time.Types (TimeData)
 import Duckling.TimeGrain.Types (Grain)
 import Duckling.Url.Types (UrlData)
 import Duckling.Volume.Types (VolumeData)
+import Duckling.FlightNumber.Types (FlightNumberData)
 
 -- -----------------------------------------------------------------
 -- Token
@@ -105,6 +106,7 @@ data Dimension a where
   Url :: Dimension UrlData
   Volume :: Dimension VolumeData
   CustomDimension :: CustomDimension a => a -> Dimension (DimensionData a)
+  FlightNumber :: Dimension FlightNumberData
 
 -- Show
 instance Show (Dimension a) where
@@ -123,6 +125,7 @@ instance Show (Dimension a) where
   show Url = "Url"
   show Volume = "Volume"
   show (CustomDimension dim) = show dim
+  show FlightNumber = "FlightNumber"
 instance GShow Dimension where gshowsPrec = showsPrec
 
 -- TextShow
@@ -150,6 +153,7 @@ instance Hashable (Dimension a) where
   hashWithSalt s Url                 = hashWithSalt s (12::Int)
   hashWithSalt s Volume              = hashWithSalt s (13::Int)
   hashWithSalt s (CustomDimension _) = hashWithSalt s (14::Int)
+  hashWithSalt s FlightNumber        = hashWithSalt s (15::Int)
 
 instance GEq Dimension where
   geq RegexMatch RegexMatch = Just Refl
@@ -183,6 +187,8 @@ instance GEq Dimension where
   geq (CustomDimension (_ :: a)) (CustomDimension (_ :: b))
     | Just Refl <- eqT :: Maybe (a :~: b) = Just Refl
   geq (CustomDimension _) _ = Nothing
+  geq FlightNumber FlightNumber = Just Refl
+  geq FlightNumber _ = Nothing
 
 isDimension :: Dimension a -> Token -> Bool
 isDimension dim (Token dim' _) = isJust $ geq dim dim'
