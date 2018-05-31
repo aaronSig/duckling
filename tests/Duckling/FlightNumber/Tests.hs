@@ -28,11 +28,3 @@ tests = testGroup "FlightNumber Tests"
   [ makeCorpusTest [This FlightNumber] corpus
   , makeNegativeCorpusTest [This FlightNumber] negativeCorpus
   ]
-
--- surroundTests :: TestTree
--- surroundTests = testCase "Surround Tests" $
---   mapM_ (analyzedFirstTest testContext testOptions . withTargets [This FlightNumber]) xs
---   where
---     xs = examples (FlightNumberData "www.lets-try-this-one.co.uk/episode-7" "lets-try-this-one.co.uk")
---                   [ "phishing link: www.lets-try-this-one.co.uk/episode-7  If you want my job"
---                   ]

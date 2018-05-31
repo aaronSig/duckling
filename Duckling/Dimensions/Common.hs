@@ -19,4 +19,5 @@ allDimensions =
   , This Numeral
   , This PhoneNumber
   , This Url
+  , This FlightNumber
   ]

@@ -24,27 +24,17 @@ ruleFlightNumber :: Rule
 ruleFlightNumber = Rule
   { name = "flightNumber"
   , pattern =
-    [ regex "(?<!([A-Z0-9]))(([A-Z]{2}|[A-Z][0-9]|[0-9][A-Z])[\r\n\t\f\v ]?[0-9]{1,4})(?:[^0-9])"
+    [ regex $
+            "([A-Z]{2,3}|[A-Z][0-9]|[0-9][A-Z])"++ -- Iata / ICAO Code
+            "[\\s]?"++ -- Optional Space
+            "([0-9]{1,4})"  -- Flight Number
     ]
   , prod = \tokens -> case tokens of
-      (Token RegexMatch (GroupMatch (m:_:_flight_number:_airline_iata)):
-       _) -> Just . Token FlightNumber $ flightNumber _airline_iata _flight_number
+      (Token RegexMatch (GroupMatch (_airline_iata:_flight_number:_)):_) -> 
+        Just . Token FlightNumber $ flightNumber _airline_iata _flight_number
       _ -> Nothing
   }
 
 rules :: [Rule]
 rules =
   [ ruleFlightNumber ]
-
-
--- ruleLocalURL :: Rule
--- ruleLocalURL = Rule
---   { name = "local url"
---   , pattern =
---     [ regex "(([a-zA-Z]+)://([\\w_-]+)(:(\\d+))?(/[^?\\s#]*)?(\\?[^\\s#]+)?)"
---     ]
---   , prod = \tokens -> case tokens of
---       (Token RegexMatch (GroupMatch (m:_protocol:domain:_:_port:_path:_query:_)):
---        _) -> Just . Token Url $ url m domain
---       _ -> Nothing
---   }

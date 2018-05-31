@@ -23,6 +23,7 @@ import qualified Duckling.Numeral.Rules as Numeral
 import qualified Duckling.PhoneNumber.Rules as PhoneNumber
 import qualified Duckling.Temperature.Rules as Temperature
 import qualified Duckling.Url.Rules as Url
+import qualified Duckling.FlightNumber.Rules as FlightNumber
 import qualified Duckling.Volume.Rules as Volume
 
 rules :: Some Dimension -> [Rule]
@@ -39,5 +40,6 @@ rules (This Temperature) = Temperature.rules
 rules (This Time) = []
 rules (This TimeGrain) = []
 rules (This Url) = Url.rules
+rules (This FlightNumber) = FlightNumber.rules
 rules (This Volume) = Volume.rules
 rules (This (CustomDimension dim)) = dimRules dim

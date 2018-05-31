@@ -24,6 +24,6 @@ import Duckling.FlightNumber.Types (FlightNumberData(..))
 -- -----------------------------------------------------------------
 -- Production
 
-flightNumber :: [Text] -> Text -> FlightNumberData
+flightNumber :: Text -> Text -> FlightNumberData
 flightNumber airlineIata number = FlightNumberData
-  {TFlightNumber.airlineIata = airlineIata!!0, TFlightNumber.number = Text.toUpper number}
+  {TFlightNumber.value = Text.concat [airlineIata, number], TFlightNumber.airlineIata = airlineIata, TFlightNumber.number = number}

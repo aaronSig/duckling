@@ -41,6 +41,7 @@ toName Temperature = "temperature"
 toName Time = "time"
 toName TimeGrain = "time-grain"
 toName Url = "url"
+toName FlightNumber = "flight-number"
 toName Volume = "volume"
 toName (CustomDimension dim) = Text.pack (show dim)
 
@@ -59,5 +60,6 @@ fromName name = HashMap.lookup name m
       , ("temperature", This Temperature)
       , ("time", This Time)
       , ("url", This Url)
+      , ("flight-number", This FlightNumber)
       , ("volume", This Volume)
       ]

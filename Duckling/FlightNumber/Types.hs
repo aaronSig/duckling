@@ -26,7 +26,8 @@ import Prelude
 import Duckling.Resolve (Resolve(..))
 
 data FlightNumberData = FlightNumberData
-  { airlineIata :: Text
+  { value :: Text
+  , airlineIata :: Text
   , number :: Text
   }
   deriving (Eq, Generic, Hashable, Ord, Show, NFData)
@@ -36,7 +37,8 @@ instance Resolve FlightNumberData where
   resolve _ _ x = Just (x, False)
 
 instance ToJSON FlightNumberData where
-  toJSON (FlightNumberData airlineIata number) = object
-    [ "airline_iata"  .= airlineIata
+  toJSON (FlightNumberData value airlineIata number) = object
+    [ "value"  .= value
+    , "airline_iata"  .= airlineIata
     , "flight_number" .= number
     ]

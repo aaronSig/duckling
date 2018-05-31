@@ -41,5 +41,6 @@ langRules (This Temperature) = []
 langRules (This Time) = []
 langRules (This TimeGrain) = []
 langRules (This Url) = []
+langRules (This FlightNumber) = []
 langRules (This Volume) = []
 langRules (This (CustomDimension dim)) = dimLangRules KA dim

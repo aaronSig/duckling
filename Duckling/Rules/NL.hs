@@ -48,5 +48,6 @@ langRules (This Temperature) = []
 langRules (This Time) = Time.rules
 langRules (This TimeGrain) = TimeGrain.rules
 langRules (This Url) = []
+langRules (This FlightNumber) = []
 langRules (This Volume) = Volume.rules
 langRules (This (CustomDimension dim)) = dimLangRules NL dim

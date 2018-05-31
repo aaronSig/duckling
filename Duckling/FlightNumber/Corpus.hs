@@ -26,22 +26,27 @@ negativeCorpus :: NegativeCorpus
 negativeCorpus = (testContext, testOptions, examples)
   where
     examples =
-      [ "Lets goto23B Session Street"
+      [ "Lets goto23 Session Street"
       , "12345"
-      , "2b Loughton Street"
+      --, "Aug 18" TODO, how to ignore dates?
       ]
 
 allExamples :: [Example]
 allExamples = concat
-  [ examples (FlightNumberData "FR" "103")
+  [ examples (FlightNumberData "FR103" "FR" "103")
              [ "FR103"
              , "FR 103"
              ]
-  , examples (FlightNumberData "AI" "9032")
+  , examples (FlightNumberData "AI9032" "AI" "9032")
              [ "AI9032"
              , "AI 9032"
              ]
-  , examples (FlightNumberData "EY" "1290")
-             [ "EY 1290"
+  , examples (FlightNumberData "EZY1290" "EZY" "1290")
+             [ "EZY 1290"
+             , "EZY1290"
+             ]
+  , examples (FlightNumberData "0B101" "0B" "101")
+             [ "0B 101"
+             , "0B101"
              ]
   ]
