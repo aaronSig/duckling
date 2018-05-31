@@ -28,6 +28,7 @@ negativeCorpus = (testContext, testOptions, examples)
     examples =
       [ "Lets goto23 Session Street"
       , "12345"
+      , "WU9SGZ"
       --, "Aug 18" TODO, how to ignore dates?
       ]
 

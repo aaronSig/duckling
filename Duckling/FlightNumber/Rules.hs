@@ -27,7 +27,7 @@ ruleFlightNumber = Rule
     [ regex $
             "([A-Z]{2,3}|[A-Z][0-9]|[0-9][A-Z])"++ -- Iata / ICAO Code
             "[\\s]?"++ -- Optional Space
-            "([0-9]{1,4})"  -- Flight Number
+            "([0-9]{1,4})\\b"  -- Flight Number
     ]
   , prod = \tokens -> case tokens of
       (Token RegexMatch (GroupMatch (_airline_iata:_flight_number:_)):_) -> 
